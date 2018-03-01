@@ -58,7 +58,7 @@ public class DemoBoolean{
     System.out.println(Math.random()); // random number bwtween 0 and 1 
     
     //minimun  = Math.random () + maximum  
-    //formula for any range use ==> Min + (Math.random() * (MAx -Min))
+    //formula for any range use ==> Min + (Math.random() * (Max -Min))
     System.out.println(1 + (int)(Math.random() + (10 - 5))); 
     
     if(chanceOfSurving <= 3){
