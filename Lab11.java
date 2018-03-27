@@ -19,19 +19,14 @@ import java.util.Scanner;
    }
     // Beginning of matrix 
     public static void printMatrix(int n){
-    do{
+    do {
     for(int i = 0; i < n; i++){
     int random = 0 + (int)(Math.random() * 2);
     System.out.print(random);
-    }
-     
-      
-      
-        }
-  }
-  }   
-      
-    
-      
-    
-  
+     }
+     }
+     }
+     System.out.print("");
+     while (i > n);
+     } 
+ 
