@@ -31,90 +31,69 @@ REMEMBER:
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 import java.util.Scanner;
 public class GameDriver{
 
   // Start of application
-  public static void main(String[] args){
+  public static void main(String[] args){ 
     // Create Scanner
     Scanner input = new Scanner(System.in);
+   
     Utility tool = new Utility();
+    //Utility write = new Ultility();
     // Display splash screen
-   tool.readFile("SplashScreen.txt");
+    tool.readFile("SplashScreen.txt");
+      
     tool.readFile("GameDriver.txt");
-  
+    
     // Start of Game Time
    
     
     // Declaring variables
-    int question;
-    int name;
-    int idea;
-                       
-    // Questuon #1
-    System.out.println("Do you remember anything that happened to you? "
-                       + "Push 1 for Yes, Push 2 for No."); // Yes or No answers only
-    // Prompt user to enter 1 or 2
-    question = input.nextInt();
-    if(question >= 2){
-      System.out.println("No");
-    }
-    else{
-      System.out.println("Yes");
-    }     
-    // Question #2 
-    System.out.println("What about your name?"); 
-    name = input.nextInt();
-    if (name >= 2){
-      System.out.println("No");
-    }
-    else{
-      System.out.println("Yes");
-    }
-    // Question #3
-    System.out.println("Do you have an idea why you are here?");
-    idea = input.nextInt();
-    if (name >= 2){
-      System.out.println("No");
-    }
-    else{
-      System.out.println("Yes");
-    }
+    //int question;
+    //int name;
+    //int idea;
+           
+    // Question #1
+    System.out.println("What is your name?");
+     
+    String name = "";
+    name = input.nextLine();
+    //tool.writeFile("PlayerInfo.txt");
+    System.out.println("Welcome " + name + ", to Escape the Room");
     
-    System.out.println("");
-    System.out.println("Well, let's begin by trying to figure out a way to exit this room.");
     
     // Let the game begin!
-    System.out.println("There are 5 doors in this room, choose the right one to process!");
+    System.out.println("There are 5 doors in this room, choose the right one to proceed to the next room! If not you'll have a nasty surprise!");
     
     // Generate number between 1 to 5
-    int randomNum = (int)((Math.random() * 5) + 1);
-    System.out.println((int)((Math.random() * 5) + 1));
-    
-    if(randomNum == 5){
+    //int randomNum = (int)((Math.random() * 5) + 1);
+    //System.out.println((int)((Math.random() * 5) + 1));
+   
+    System.out.println("Now choose 1 of these 5 doors.");
+    int choice = input.nextInt(); 
+    if(choice == 3){
       System.out.println("You have choosen the right door. Please move ahead.");
     }
-    else if(randomNum == 4){
-      System.out.println("Are you sure you want this door? This might lead to your death.");
+    else if(choice == 5){
+      System.out.println("You have found a creepy doll");
     }
-    else if(randomNum == 3){
+    else if(choice == 4){
+      System.out.println("You found a pit that you fell into. Might wanna check before stepping in next time");
+    }
+    else if(choice == 3){
       System.out.println("You found a key for another room.");
     }
-    else if(randomNum == 2){
-      System.out.println("You found a chest full of loot.");
+    else if(choice == 2){
+      System.out.println("You found a chest full of... nothing.");
     }
-    else{
-      System.out.println("Game Over.");
-    }
+   else if(choice == 1){
+      System.out.println("You found a wall behind this door");
+   }
     
-    
-    System.out.println(" _______  _______  __   __  _______    _______  __   __  _______  ______    __  \n"
-                     + "|       ||   _   ||  |_|  ||       |  |       ||  | |  ||       ||    _ |  |  | \n"
-                     + "|    ___||  |_|  ||       ||    ___|  |   _   ||  |_|  ||    ___||   | ||  |  | \n"
-                     + "|   | __ |       ||       ||   |___   |  | |  ||       ||   |___ |   |_||_ |  | \n"
-                     + "|   ||  ||       ||       ||    ___|  |  |_|  ||       ||    ___||    __  ||__| \n"
-                     + "|   |_| ||   _   || ||_|| ||   |___   |       | |     | |   |___ |   |  | | __  \n"
-                     + "|_______||__| |__||_|   |_||_______|  |_______|  |___|  |_______||___|  |_||__| \n");
+   tool.readFile("EndSplash.txt");
   }
 }
