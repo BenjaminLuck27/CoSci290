@@ -29,20 +29,24 @@ this method opens a file and prints out each line
     }catch(IOException e){
     e.printStackTrace();
       
-      String FileName = "PlayerInfo.txt";
+     
+      
+  }
+    public void writeFile(String CONTENT){
+     String FileName = "PlayerInfo.txt";
 
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(Filename))){
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(CONTENT))){
 
-			String content = "This is the content to write into file\n";
+			String content = CONTENT;
 
 			bw.write(content);
 
-			System.out.println("Done");
+			System.out.println(content);
 
 		}catch(IOException ee){
 
 			e.printStackTrace();
    }
   }
- } 
+ }
 }
