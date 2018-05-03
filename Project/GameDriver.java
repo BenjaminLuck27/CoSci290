@@ -35,6 +35,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.Random;
 
 public class GameDriver{
   
@@ -48,22 +49,23 @@ public class GameDriver{
     tool.readFile("SplashScreen.txt");
     // Story setup
     // Start of Game
-    tool.readFile("Story.txt");
+    
+    tool.readFile("GameDriver.txt");
     System.out.println("");
-    tool.readFile("Story2.txt");
+    //tool.readFile("Story2.txt");
     System.out.println("");
-    tool.readFile("Story3.txt");
+    //tool.readFile("Story3.txt");
     
     // First Decision
     // Declaring variables and prompting user to choose an option
-    System.out.println("1. Yes, crash the box! \n"
+    System.out.println("1. Yes, break the box! \n"
                        + "2. No, try searching the shelf");
     int puzzle;
     puzzle = input.nextInt();
     int puzzlee = puzzle;
     String puzzle1;
     switch(puzzlee){
-      case 1: puzzle1 = "Yes, crash the box! You found the lost door handle";
+      case 1: puzzle1 = "Yes, break the box! You found the lost door handle";
         break;
       default: puzzle1 = "No, try searching the shelf! You only found some dust, it must be in the box";
         break;
@@ -72,11 +74,10 @@ public class GameDriver{
     System.out.println("");
     System.out.println("");
       
-    String CONTENT = "testWriting";
-    tool.writeFile("testWriting.txt", CONTENT);
+    //String CONTENT = "testWriting";
+    //tool.writeFile("testWriting.txt", CONTENT);
     
-    
-    tool.readFile("Story4.txt");
+    //tool.readFile("Story4.txt");
     System.out.println("");
     
     System.out.println("Now choose 1 of theses 4 doors!");
@@ -118,6 +119,13 @@ public class GameDriver{
       System.out.println("Game Over.");
     }
     
-    tool.readFile("GameOver.txt");
+    tool.readFile("EndSplash.txt");
+    
+    
+    int max = 5;
+    int min = 4;
+    int random = (int)(Math.random() * 5 + 1);
+    
+
   }
 }

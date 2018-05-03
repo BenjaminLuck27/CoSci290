@@ -32,10 +32,11 @@ this method opens a file and prints out each line
      
       
   }
-    public void writeFile(String CONTENT){
-     String FileName = "PlayerInfo.txt";
+  }
+    public void writeFile(String FILENAME, String CONTENT){
+     //String FILENAME = "PlayerInfo.txt";
 
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(CONTENT))){
+	  try(BufferedWriter bw = new BufferedWriter(new FileWriter(CONTENT))){
 
 			String content = CONTENT;
 
@@ -43,10 +44,9 @@ this method opens a file and prints out each line
 
 			System.out.println(content);
 
-		}catch(IOException ee){
+		}catch(IOException e){
 
 			e.printStackTrace();
    }
   }
  }
-}
