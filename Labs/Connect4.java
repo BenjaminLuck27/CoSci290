@@ -1,5 +1,5 @@
 /*
-  Author: Benjamin Luck
+  Author: Benjamin Luckm (Worked with Thomas Mak)
   
   Lab 21: Complete implementation for each function 
     to complete this Tic Tac Toe game!
@@ -8,13 +8,16 @@
 
 import java.util.*;
 
-public class TicTacToe{
+public class Connect4{
   
   //declare 2d array to hold X's and O's to represent board
   static char[][] board = {
-                            {' ', ' ', ' '},
-                            {' ', ' ', ' '},
-                            {' ', ' ', ' '}
+                            {' ', ' ', ' ', ' ', ' ', ' '},
+                            {' ', ' ', ' ', ' ', ' ', ' '},
+                            {' ', ' ', ' ', ' ', ' ', ' '}, 
+                            {' ', ' ', ' ', ' ', ' ', ' '},
+                            {' ', ' ', ' ', ' ', ' ', ' '},
+                            {' ', ' ', ' ', ' ', ' ', ' '},
                           };
   static char xo = 'x'; //holds which player is currently playing
   static boolean gameOver = false; //ends the loop if there is a winner
@@ -32,9 +35,9 @@ public class TicTacToe{
     //while there isn't a winner
     while(!gameOver){
       printBoard();
-      System.out.println("It is " + xo + "'s turn. Please enter 0, 1, 2 for row");
+      System.out.println("It is " + xo + "'s turn. Please enter 0, 1, 2, 3, 4, or 5 for row");
       row = input.nextInt();
-      System.out.println("Please enter 0, 1, 2 for col");
+      System.out.println("Please enter 0, 1, 2, 3, 4, or 5 for col");
       col = input.nextInt();
       move(row, col);
       if(checkWinner()){
@@ -49,13 +52,19 @@ public class TicTacToe{
     with updated moves by players.
   */
   public static void printBoard(){
-      System.out.println("/---|---|---\\");
-      System.out.println("| " + board[0][0] + " | " + board[1][0] + " | " + board[2][0] + " |");
-      System.out.println("|-----------|");
-      System.out.println("| " + board[0][1] + " | " + board[1][1] + " | " + board[2][1] + " |");
-      System.out.println("|-----------|");
-      System.out.println("| " + board[0][2] + " | " + board[1][2] + " | " + board[2][2] + " |");
-      System.out.println("\\---|---|---/");
+      System.out.println("/---|---|---|---|---|---\\");
+      System.out.println("| " + board[0][0] + " | " + board[1][0] + " | " + board[2][0] + " | " + board[3][0] + " | " + board[4][0] + " |" + board[5][0] + "  |");
+      System.out.println("|-----------------------|");
+      System.out.println("| " + board[0][1] + " | " + board[1][1] + " | " + board[2][1] + " | " + board[3][1] + " | " + board[4][1] + " |" + board[5][1] + "  |");
+      System.out.println("|-----------------------|");
+      System.out.println("| " + board[0][2] + " | " + board[1][2] + " | " + board[2][2] + " | " + board[3][2] + " | " + board[4][2] + " |" + board[5][2] + "  |");
+      System.out.println("|-----------------------|");
+      System.out.println("| " + board[0][3] + " | " + board[1][3] + " | " + board[2][3] + " | " + board[3][3] + " | " + board[4][3] + " |" + board[5][3] + "  |");
+      System.out.println("|-----------------------|");
+      System.out.println("| " + board[0][4] + " | " + board[1][4] + " | " + board[2][4] + " | " + board[3][4] + " | " + board[4][4] + " |" + board[5][4] + "  |");
+      System.out.println("|-----------------------|");
+      System.out.println("| " + board[0][5] + " | " + board[1][5] + " | " + board[2][5] + " | " + board[3][5] + " | " + board[4][5] + " |" + board[5][5] + "  |");
+      System.out.println("\\---|---|---|---|---|---/");
   }//end of printBoard
   
   public static void changeXO(){
@@ -99,16 +108,75 @@ public class TicTacToe{
     Returns true if there there is a winner or a draw to end the game
   */
   public static boolean checkWinner(){
-     if (board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != ' ' ||
-        board[1][0] == board[1][1] && board[1][0] == board[1][2] && board[1][0] != ' ' || 
-        board[2][0] == board[2][1] && board[2][0] == board[2][2] && board[2][0] != ' ' ||
-        board[0][0] == board[1][0] && board[0][0] == board[2][0] && board[0][0] != ' ' ||
-        board[1][0] == board[0][0] && board[1][0] == board[2][0] && board[1][0] != ' ' ||
-        board[2][0] == board[0][0] && board[2][0] == board[1][0] && board[2][0] != ' ' ||
-        board[0][1] == board[1][1] && board[0][1] == board[2][1] && board[0][1] != ' ' ||
-        board[0][2] == board[1][2] && board[0][2] == board[2][2] && board[0][2] != ' ' ||
-        board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] != ' ' ||
-        board[2][0] == board[1][1] && board[2][0] == board[0][2] && board[2][0] != ' ' ){
+     if (board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] == board[0][3] && board[0][0] != ' ' || // Row 0, Column 0 - 3
+        board[0][1] == board[0][2] && board[0][1] == board[0][3] && board[0][1] == board[0][4] && board[0][1] != ' ' || // Row 0, Column 1 - 4
+        board[0][2] == board[0][3] && board[0][2] == board[0][4] && board[0][2] == board[0][5] && board[0][2] != ' ' || // Row 0, Column 2 - 5
+        
+        board[1][0] == board[1][1] && board[1][0] == board[1][2] && board[1][0] == board[1][3] && board[1][0] != ' ' || // Row 1, Column 0 - 3
+        board[1][1] == board[1][2] && board[1][1] == board[1][3] && board[1][1] == board[1][4] && board[1][1] != ' ' || // Row 1, Column 1 - 4
+        board[1][2] == board[1][3] && board[1][2] == board[1][4] && board[1][2] == board[1][5] && board[1][2] != ' ' || // Row 1, Column 2 - 5
+        
+        board[2][0] == board[2][1] && board[2][0] == board[2][2] && board[2][0] == board[2][3] && board[2][0] != ' ' || // Row 2
+        board[2][1] == board[2][2] && board[2][1] == board[2][3] && board[2][1] == board[2][4] && board[2][1] != ' ' ||
+        board[2][2] == board[2][3] && board[2][2] == board[2][4] && board[2][2] == board[2][5] && board[2][2] != ' ' ||
+        
+        board[3][0] == board[3][1] && board[3][0] == board[3][2] && board[3][0] == board[3][3] && board[3][0] != ' ' || // Row 3
+        board[3][1] == board[3][2] && board[3][1] == board[3][3] && board[3][1] == board[3][4] && board[3][1] != ' ' ||
+        board[3][2] == board[3][3] && board[3][2] == board[3][4] && board[3][2] == board[3][5] && board[3][2] != ' ' ||
+        
+        board[4][0] == board[4][1] && board[4][0] == board[4][2] && board[4][0] == board[4][3] && board[4][0] != ' ' || // Row 4
+        board[4][1] == board[4][2] && board[4][1] == board[4][3] && board[4][1] == board[4][4] && board[4][1] != ' ' ||
+        board[4][2] == board[4][3] && board[4][2] == board[4][4] && board[4][2] == board[4][5] && board[4][2] != ' ' ||
+        
+        board[5][0] == board[5][1] && board[5][0] == board[5][2] && board[5][0] == board[5][3] && board[5][0] != ' ' || // Row 5
+        board[5][1] == board[5][2] && board[5][1] == board[5][3] && board[5][1] == board[5][4] && board[5][1] != ' ' ||
+        board[5][2] == board[5][3] && board[5][2] == board[5][4] && board[5][2] == board[5][5] && board[5][2] != ' ' ||
+        
+        board[0][0] == board[1][0] && board[0][0] == board[2][0] && board[0][0] == board[3][0] && board[0][0] != ' ' || // Column 0
+        board[1][0] == board[2][0] && board[1][0] == board[3][0] && board[1][0] == board[4][0] && board[1][0] != ' ' ||
+        board[2][0] == board[3][0] && board[2][0] == board[4][0] && board[2][0] == board[5][0] && board[2][0] != ' ' ||
+        
+        board[0][1] == board[1][1] && board[0][1] == board[2][1] && board[0][1] == board[3][1] && board[0][1] != ' ' || // Column 1
+        board[1][1] == board[2][1] && board[1][1] == board[3][1] && board[1][1] == board[4][1] && board[1][1] != ' ' || 
+        board[2][1] == board[3][1] && board[2][1] == board[4][1] && board[2][1] == board[5][1] && board[2][1] != ' ' || 
+        
+        board[0][2] == board[1][2] && board[0][2] == board[2][2] && board[0][2] == board[3][2] && board[0][2] != ' ' || // Column 2
+        board[1][2] == board[2][2] && board[1][2] == board[3][2] && board[1][2] == board[4][2] && board[1][2] != ' ' || 
+        board[2][2] == board[3][2] && board[2][2] == board[4][2] && board[2][2] == board[5][2] && board[2][2] != ' ' ||
+        
+        board[0][3] == board[1][3] && board[0][3] == board[2][3] && board[0][3] == board[3][3] && board[0][3] != ' ' || // Column 3
+        board[1][3] == board[2][3] && board[1][3] == board[3][3] && board[1][3] == board[4][3] && board[1][3] != ' ' || 
+        board[2][3] == board[3][3] && board[2][3] == board[4][3] && board[2][3] == board[5][3] && board[2][3] != ' ' ||
+        
+        board[0][4] == board[1][4] && board[0][4] == board[2][4] && board[0][4] == board[3][4] && board[0][4] != ' ' || // Column 4
+        board[1][4] == board[2][4] && board[1][4] == board[3][4] && board[1][4] == board[4][4] && board[1][4] != ' ' || 
+        board[2][4] == board[3][4] && board[2][4] == board[4][4] && board[2][4] == board[5][4] && board[2][4] != ' ' ||
+        
+        board[0][5] == board[1][5] && board[0][5] == board[2][5] && board[0][5] == board[3][5] && board[0][5] != ' ' || // Column 5
+        board[1][5] == board[2][5] && board[1][5] == board[3][5] && board[1][5] == board[4][5] && board[1][5] != ' ' || 
+        board[2][5] == board[3][5] && board[2][5] == board[4][5] && board[2][5] == board[5][5] && board[2][5] != ' ' ||
+           
+        board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == board[3][3] && board[0][0] != ' ' ||
+        board[1][1] == board[2][2] && board[1][1] == board[3][3] && board[1][1] == board[4][4] && board[1][1] != ' ' ||
+        board[2][2] == board[3][3] && board[2][2] == board[4][4] && board[2][2] == board[5][5] && board[2][2] != ' ' ||  
+        board[1][0] == board[2][1] && board[1][0] == board[3][2] && board[1][0] == board[4][3] && board[1][0] != ' ' ||
+        board[2][1] == board[3][2] && board[2][1] == board[4][3] && board[2][1] == board[5][4] && board[2][1] != ' ' ||
+        board[2][0] == board[3][1] && board[2][0] == board[4][2] && board[2][0] == board[5][3] && board[2][0] != ' ' ||
+        board[0][1] == board[1][2] && board[0][1] == board[2][3] && board[0][1] == board[3][4] && board[0][1] != ' ' ||
+        board[1][2] == board[2][3] && board[1][2] == board[3][4] && board[1][2] == board[4][5] && board[1][2] != ' ' ||
+        board[0][2] == board[1][3] && board[0][2] == board[2][4] && board[0][2] == board[3][5] && board[0][2] != ' ' ||
+        
+        board[5][0] == board[4][1] && board[5][0] == board[3][2] && board[5][0] == board[2][3] && board[5][0] != ' ' ||
+        board[4][1] == board[3][2] && board[4][1] == board[2][3] && board[4][1] == board[1][4] && board[4][1] != ' ' ||
+        board[3][2] == board[2][3] && board[3][2] == board[1][4] && board[3][2] == board[0][5] && board[3][2] != ' ' ||
+        
+        board[4][0] == board[3][1] && board[4][0] == board[2][2] && board[4][0] == board[1][3] && board[4][0] != ' ' ||
+        board[3][1] == board[2][2] && board[3][1] == board[1][3] && board[3][1] == board[0][4] && board[3][1] != ' ' ||
+        board[3][0] == board[2][1] && board[3][0] == board[1][2] && board[3][0] == board[0][3] && board[3][0] != ' ' ||
+        
+        board[5][1] == board[4][2] && board[5][1] == board[3][3] && board[5][1] == board[2][4] && board[5][1] != ' ' ||
+        board[4][2] == board[3][3] && board[4][2] == board[2][4] && board[4][2] == board[1][5] && board[4][2] != ' ' ||
+        board[5][2] == board[4][3] && board[5][2] == board[3][4] && board[5][2] == board[2][5] && board[5][2] != ' ' ){ 
       printBoard(); // Call back board
       changeXO(); // Call back change of X and O
       System.out.println("Player " + xo + " is the winner!");
